@@ -76,7 +76,6 @@ let addressBookArr = new Array();
 function contactExists(fName, lName){
     return addressBookArr.some(u => u.firstName == fName && u.lastName == lName);
 }
-
 function editContact(fName, lName, property, value){
     if(contactExists(fName, lName)){
     switch(property){
@@ -105,6 +104,15 @@ function editContact(fName, lName, property, value){
       console.log("Contact Does Not Exist");
   }
 }
+//UC5
+function deleteContact(fName, lName){
+    if(contactExists(fName, lName)){
+    addressBookArr = addressBookArr.filter((user) => user.firstName != fName && user.lastName != lName);
+    }else{
+        console.log("Contact Does Not Exist");
+    }
+}
+
 try{
 addressBookArr.push(new Contact("Varad", "Vinayak", "Sadashivpeth", "Pune", "Maharashtra", "987654", "91 9898989898", "ganesh@gmail.com"));
 }catch(e){
@@ -118,4 +126,7 @@ addressBookArr.push(new Contact("Shree", "Jadhav", "Kalyaninagar", "Pune", "Maha
 console.log(addressBookArr);
 console.log("-----------------------")
 editContact("Shree","Jadhav","address","Kothrud")
+console.log(addressBookArr);
+console.log("-----------------------")
+deleteContact("Shree","Jadhav");
 console.log(addressBookArr);
