@@ -75,6 +75,10 @@ let addressBookArr = new Array();
 
 let contactsCityMap = new Map();
 let contactsStateMap = new Map();
+
+let countCityMap = new Map();
+let countStateMap = new Map();
+
 //UC4
 function contactExists(fName, lName){
     return addressBookArr.some(u => u.firstName == fName && u.lastName == lName);
@@ -142,6 +146,16 @@ function viewContactsByState(){
     return contactsStateMap;
 }
 
+function countByCity(){
+    addressBookArr.filter((contact) => countCityMap.set(contact.city, searchContactByCity(contact.city).length));
+    return countCityMap;
+}
+
+function countByState(){
+    addressBookArr.filter((contact) => countStateMap.set(contact.state, searchContactByCity(contact.state).length));
+    return countStateMap;
+}
+
 //UC8
 function searchContactByCity(city) {
     return addressBookArr.filter((contact) => contact.city == city);
@@ -193,4 +207,5 @@ try{
 }
 console.log(searchContactByCity("Pune"));
 
-console.log(viewContactsByCity("Pune"));
+console.log(viewContactsByCity());
+console.log(countByCity());
