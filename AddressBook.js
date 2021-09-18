@@ -128,6 +128,16 @@ function countContact(count) {
     count += 1;
     return count;
 }
+
+//UC8
+function searchContactByCity(city) {
+    return addressBookArr.filter((contact) => contact.city == city);
+  }
+
+function searchContactByState(state) {
+    return addressBookArr.filter((contact) => contact.state == state);
+  }
+
 let contact1 =new Contact("Varad", "Vinayak", "Sadashivpeth", "Pune", "Maharashtra", "987654", "91 9898989898", "ganesh@gmail.com");
 let contact2 =new Contact("Shree", "Jadhav", "Kalyaninagar", "Pune", "Maharashtra", "876543", "91 8989898989", "shree@gmail.com");
 
@@ -148,10 +158,17 @@ console.log("No of contacts : "+ addressBookArr.reduce(countContact, 0));
 console.log("-----------------------")
 deleteContact("Shree","Jadhav");
 console.log(addressBookArr);
-//console.log("-----------------------")
+console.log("-----------------------")
 console.log("No of contacts : "+ addressBookArr.reduce(countContact, 0));
 try{
     addContact(contact1);
     }catch(e){
         console.error(e);
 }
+try{
+    addressBookArr.push(contact2);
+}catch(e){
+    console.error(e);
+}
+console.log("-----------------------")
+console.log(searchContactByCity("Pune"));
