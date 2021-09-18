@@ -209,3 +209,6 @@ console.log(searchContactByCity("Pune"));
 
 console.log(viewContactsByCity());
 console.log(countByCity());
+console.log("-----------------------")
+addressBookArr.sort((person1, person2) => (person1.firstName).localeCompare(person2.firstName));
+console.log(addressBookArr); 
