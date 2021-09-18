@@ -72,6 +72,9 @@ class Contact {
     }
 }
 let addressBookArr = new Array();
+
+let contactsCityMap = new Map();
+let contactsStateMap = new Map();
 //UC4
 function contactExists(fName, lName){
     return addressBookArr.some(u => u.firstName == fName && u.lastName == lName);
@@ -129,6 +132,16 @@ function countContact(count) {
     return count;
 }
 
+function viewContactsByCity(){
+    addressBookArr.filter((contact) => contactsCityMap.set(contact.city, searchContactByCity(contact.city)));
+    return contactsCityMap;
+}
+
+function viewContactsByState(){
+    addressBookArr.filter((contact) => contactsCityMap.set(contact.state, searchContactByCity(contact.state)));
+    return contactsStateMap;
+}
+
 //UC8
 function searchContactByCity(city) {
     return addressBookArr.filter((contact) => contact.city == city);
@@ -140,6 +153,7 @@ function searchContactByState(state) {
 
 let contact1 =new Contact("Varad", "Vinayak", "Sadashivpeth", "Pune", "Maharashtra", "987654", "91 9898989898", "ganesh@gmail.com");
 let contact2 =new Contact("Shree", "Jadhav", "Kalyaninagar", "Pune", "Maharashtra", "876543", "91 8989898989", "shree@gmail.com");
+let contact3 =new Contact("Sai", "Samarth", "Deccan", "Pune", "Maharashtra", "765432", "91 7878787878", "sai@gmail.com");
 
 
 try{
@@ -152,7 +166,7 @@ try{
 }
 console.log(addressBookArr);
 console.log("-----------------------")
-editContact("Shree","Jadhav","address","Kothrud")
+editContact("Shree","Jadhav","city","Singhad")
 console.log(addressBookArr);
 console.log("No of contacts : "+ addressBookArr.reduce(countContact, 0));
 console.log("-----------------------")
@@ -172,3 +186,11 @@ try{
 }
 console.log("-----------------------")
 console.log(searchContactByCity("Pune"));
+try{
+    addressBookArr.push(contact3);
+    }catch(e){
+        console.error(e);
+}
+console.log(searchContactByCity("Pune"));
+
+console.log(viewContactsByCity("Pune"));
