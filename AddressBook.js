@@ -70,10 +70,17 @@ class Contact {
         return "First Name : "+ this.firstName + ", Last Name : "+ this.lastName + ", Address : "+ this.address + 
         ", City : "+ this.city + ", State : "+ this.state +", Zip : "+ this.zip+ ", Phone No : "+ this.phoneNo + ", Email : "+ this.email;
     }
+}
+let addressBookArr = new Array();
+try{
+addressBookArr.push(new Contact("Varad", "Vinayak", "Sadashivpeth", "Pune", "Maharashtra", "987654", "91 9898989898", "ganesh@gmail.com"));
+}catch(e){
+    console.error(e);
 }  
 try{
-    let contact = new Contact("Varad", "Vinayak", "Sadashivpeth", "Pune", "Maharashtra", "987654", "91 9898989898", "ganesh@gmail.com");
-console.log(contact.toString());
+addressBookArr.push(new Contact("Shree", "Jadhav", "Kalyaninagar", "Pune", "Maharashtra", "876543", "91 8989898989", "shree@gmail.com"));
 }catch(e){
     console.error(e)
 }
+console.log(addressBookArr);
+
