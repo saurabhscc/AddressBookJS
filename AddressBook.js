@@ -49,7 +49,7 @@ class Contact {
     set zip(zip) {
         const pinRegex = RegExp("^([1-9])(\\S){2}(\\s)?\\S{2}[0-9]$");
         if(pinRegex.test(zip))this._zip = zip;
-        else throw "Zip is Invalid";
+        else throw "Invalid Zip ";
     }
     
     get phoneNo() {return this._phoneNo;}
@@ -72,6 +72,39 @@ class Contact {
     }
 }
 let addressBookArr = new Array();
+//UC4
+function contactExists(fName, lName){
+    return addressBookArr.some(u => u.firstName == fName && u.lastName == lName);
+}
+
+function editContact(fName, lName, property, value){
+    if(contactExists(fName, lName)){
+    switch(property){
+        case "address":
+            addressBookArr.find((contact) => contact.firstName == fName).address = value;
+            break;
+        case "city":
+            addressBookArr.find((contact) => contact.firstName == fName).city = value;
+            break;
+        case "state":
+            addressBookArr.find((contact) => contact.firstName == fName).state = value;
+            break;
+        case "zip":
+            addressBookArr.find((contact) => contact.firstName == fName).zip = value;
+            break;
+        case "phone":
+            addressBookArr.find((contact) => contact.firstName == fName).phoneNo = value;
+            break;
+        case "email":
+            addressBookArr.find((contact) => contact.firstName == fName).email = value;
+            break;
+        default:
+            console.log("Enter valid Property");
+    }
+  }else{
+      console.log("Contact Does Not Exist");
+  }
+}
 try{
 addressBookArr.push(new Contact("Varad", "Vinayak", "Sadashivpeth", "Pune", "Maharashtra", "987654", "91 9898989898", "ganesh@gmail.com"));
 }catch(e){
@@ -83,4 +116,6 @@ addressBookArr.push(new Contact("Shree", "Jadhav", "Kalyaninagar", "Pune", "Maha
     console.error(e)
 }
 console.log(addressBookArr);
-
+console.log("-----------------------")
+editContact("Shree","Jadhav","address","Kothrud")
+console.log(addressBookArr);
